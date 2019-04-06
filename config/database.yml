@@ -6,23 +6,22 @@
 #
 default: &default
   adapter: postgresql
-  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
 development:
   <<: *default
-  database: work_vibes_projects_api_test
+  database: railsapi
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: work_vibes_projects_api_test
+  encoding: unicode
+  database: railsapi
+  username: postgres
 
 production:
   <<: *default
-  database: work_vibes_projects_api_test
-  username: myapp
-  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
+  database: railsapi
